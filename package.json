@@ -5,12 +5,7 @@
   "main": "''",
   "scripts": {
     "start": "NODE_ENV=development babel-node scripts/start.js",
-    "build": "NODE_ENV=production babel-node scripts/build.js",
-    "build:staging": "NODE_ENV=staging babel-node scripts/build.js",
-    "start:php": "NODE_ENV=development PHP=true babel-node scripts/start-php.js",
-    "build:staging:php": "NODE_ENV=staging PHP=true babel-node scripts/build.js",
-    "build:php": "NODE_ENV=production PHP=true babel-node scripts/build.js",
-    "deploy": "yarn build && node s3Upload.js"
+    "build": "NODE_ENV=production babel-node scripts/build.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +13,6 @@
   },
   "author": "Chris Martin",
   "license": "MIT",
-  "homepage": "",
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.26.0",
@@ -66,19 +60,18 @@
     "react-router-redux": "^4.0.8",
     "react-svg-inline": "^2.0.1",
     "react-test-renderer": "^16.0.0",
-    "react-youtube": "^7.4.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "resolve-url-loader": "^2.1.1",
-    "s3": "^4.4.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.13.1",
+    "terser-webpack-plugin": "^1.4.1",
+    "terser-webpack-plugin-legacy": "^1.2.3",
     "url-loader": "^0.5.9",
     "uuid": "^3.3.3",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.3",
-    "webpack-php-output": "^1.0.8"
+    "webpack": "3.6.x",
+    "webpack-dev-server": "^2.9.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",

@@ -19,8 +19,3 @@ node_modules
 
 # Ignore build files
 http
-
-# Ignore yarn files
-yarn.lock
-
-app/manifest.php
