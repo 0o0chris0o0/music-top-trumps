@@ -9,3 +9,6 @@ Built using React and Redux.
   - Handle draw scenario.
   - Use real data from spotify.
   - Enable multiplayer.
+
+## Demo 🤓
+https://music-top-trumps.netlify.com
