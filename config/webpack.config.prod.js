@@ -3,48 +3,15 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import PhpOutputPlugin from 'webpack-php-output';
 
 import getClientEnvironment from './env';
 import paths from './paths';
 import { prodStyleLoader } from './styleLoader';
 
 const env = getClientEnvironment();
-const isPhpBuild = env.raw.PHP;
 
 const shouldMinifyHtml = true;
 const shouldUseSourceMap = false;
-
-let templateCompiler;
-
-if (isPhpBuild) {
-  templateCompiler = new PhpOutputPlugin({
-    devServer: false, // false or string with server entry point, e.g: app.js or
-    outPutPath: 'app', // false for default webpack path of pass string to specify
-    assetsPathPrefix: '',
-    phpClassName: 'manifest', //
-    phpFileName: 'manifest',
-    nameSpace: false, // false {nameSpace: 'name', use: ['string'] or empty property or don't pass "use" property}
-    path: '' // path to prepend to asset paths
-  });
-} else {
-  templateCompiler = new HtmlWebpackPlugin({
-    inject: true,
-    template: paths.appHtml,
-    minify: {
-      removeComments: shouldMinifyHtml,
-      collapseWhitespace: shouldMinifyHtml,
-      removeRedundantAttributes: shouldMinifyHtml,
-      useShortDoctype: shouldMinifyHtml,
-      removeEmptyAttributes: shouldMinifyHtml,
-      removeStyleLinkTypeAttributes: shouldMinifyHtml,
-      keepClosingSlash: shouldMinifyHtml,
-      minifyJS: shouldMinifyHtml,
-      minifyCSS: shouldMinifyHtml,
-      minifyURLs: shouldMinifyHtml
-    }
-  });
-}
 
 module.exports = {
   // This option controls if and how source maps are generated.
@@ -157,7 +124,22 @@ module.exports = {
 
   plugins: [
     // Generates an `index.html` file with the <script> injected.
-    templateCompiler,
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: paths.appHtml,
+      minify: {
+        removeComments: shouldMinifyHtml,
+        collapseWhitespace: shouldMinifyHtml,
+        removeRedundantAttributes: shouldMinifyHtml,
+        useShortDoctype: shouldMinifyHtml,
+        removeEmptyAttributes: shouldMinifyHtml,
+        removeStyleLinkTypeAttributes: shouldMinifyHtml,
+        keepClosingSlash: shouldMinifyHtml,
+        minifyJS: shouldMinifyHtml,
+        minifyCSS: shouldMinifyHtml,
+        minifyURLs: shouldMinifyHtml
+      }
+    }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
     new webpack.DefinePlugin(env.stringified),
@@ -187,15 +169,6 @@ module.exports = {
       {
         from: 'src/assets/img/symbols/loader-spinner.svg',
         to: 'assets/img'
-      },
-      {
-        context: 'src/assets/img/social',
-        from: '*',
-        to: 'assets/img/social'
-      },
-      {
-        from: 'snapshot.jpg',
-        to: 'assets'
       }
     ])
     // Moment.js is an extremely popular library that bundles large locale files

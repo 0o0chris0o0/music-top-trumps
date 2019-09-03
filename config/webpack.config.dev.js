@@ -2,41 +2,12 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import PhpOutputPlugin from 'webpack-php-output';
 
 import getClientEnvironment from './env';
 import paths from './paths';
 import { devStyleLoader } from './styleLoader';
 
 const env = getClientEnvironment();
-const isPhpBuild = env.raw.PHP;
-
-let templateCompiler;
-const entry = {};
-
-if (isPhpBuild) {
-  templateCompiler = new PhpOutputPlugin({
-    devServer: false, // false or string with server entry point, e.g: app.js or
-    outPutPath: 'app', // false for default webpack path of pass string to specify
-    assetsPathPrefix: '',
-    phpClassName: 'manifest', //
-    phpFileName: 'manifest',
-    nameSpace: false, // false {nameSpace: 'name', use: ['string'] or empty property or don't pass "use" property}
-    path: '' // path to prepend to asset paths
-  });
-  entry.main = ['react-hot-loader/patch', 'babel-polyfill', './src/js/main.js'];
-} else {
-  templateCompiler = new HtmlWebpackPlugin({
-    inject: true,
-    template: paths.appHtml
-  });
-  entry.main = [
-    'react-hot-loader/patch',
-    'react-dev-utils/webpackHotDevClient',
-    'babel-polyfill',
-    './src/js/main.js'
-  ];
-}
 
 module.exports = function(urls, port) {
   return {
@@ -47,7 +18,14 @@ module.exports = function(urls, port) {
 
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
-    entry,
+    entry: {
+      main: [
+        'react-hot-loader/patch',
+        'react-dev-utils/webpackHotDevClient',
+        'babel-polyfill',
+        './src/js/main.js'
+      ]
+    },
 
     output: {
       // This options is not used in dev but WebpackDevServer crashes without it
@@ -63,7 +41,7 @@ module.exports = function(urls, port) {
       // Webpack uses `publicPath` to determine where the app is being served from.
       // In development, we always serve from an absolute path to allow fonts to be loaded correctly
       // https://github.com/webpack-contrib/style-loader/issues/55
-      publicPath: isPhpBuild ? '/' : `http://localhost:${port}/`
+      publicPath: `http://localhost:${port}/`
       // for mobile testing use your IP address like so:
       // publicPath: isPhpBuild ? '/' : `http://${urls.lanUrlForConfig}:${port}/`
     },
@@ -147,7 +125,10 @@ module.exports = function(urls, port) {
     },
 
     plugins: [
-      templateCompiler,
+      new HtmlWebpackPlugin({
+        inject: true,
+        template: paths.appHtml
+      }),
       // Makes some environment variables available to the JS code, for example:
       // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
       new webpack.DefinePlugin(env.stringified),
