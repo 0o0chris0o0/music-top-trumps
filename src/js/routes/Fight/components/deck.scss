@@ -1,0 +1,40 @@
+:local {
+  .deck {
+    border: 2px dashed green;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 190px;
+    position: relative;
+  }
+
+  .discard {
+    opacity: 0.6;
+  }
+
+  .cardBack {
+  	background: radial-gradient(#266CD6, #5A8BF4);
+  	border-radius: 0.7em;
+  	width: 15em;
+  	font-size: 10px;
+  	box-shadow: -1px 0px 7px 3px rgba(black, 0.2);
+  	position: absolute;
+  	height: 285px;
+  	top: 20px;
+    left: 20px;
+    
+    &.enemy {
+      background: radial-gradient(#D7263D, #F46036);
+    }
+  }
+
+  .cardBackMiddle {
+  	transform: rotate(5deg);
+  }
+
+  .cardBackLast {
+  	transform: rotate(8deg);
+  }
+}

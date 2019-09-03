@@ -1,0 +1,29 @@
+:local {
+  .scores {
+    height: 100%;
+  }
+
+  .roundCounter {
+    font-size: 40px;
+    font-weight: 700;
+    opacity: 0;
+  }
+}
+
+// .round-animation {
+//   animation: roundFade;
+//   // animation-iteration-count: infinite;
+//   animation-duration: 2s;
+//   animation-fill-mode: forwards;
+// }
+
+// @keyframes roundFade {
+//   0% {
+//     transform: scale(1);
+//     opacity: 1;
+//   }
+//   100% {
+//     transform: scale(5);
+//     opacity: 0;
+//   }
+// }

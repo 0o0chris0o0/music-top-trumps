@@ -1,0 +1,18 @@
+@import '../../../styles/settings';
+
+:local {
+  .cardSelector {
+    margin: 20px 0;
+  }
+
+  .hand {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 0 30px;
+  }
+
+  .deckCard {
+    margin: 10px;
+  }
+}

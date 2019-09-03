@@ -1,0 +1,14 @@
+@import '../../../styles/settings';
+
+:local {
+  .link {
+    display: inline-block;
+    vertical-align: middle;
+    
+    svg {
+      width: rem-calc(21);
+      height: rem-calc(21);
+      margin: rem-calc(0 7);
+    }
+  }
+}

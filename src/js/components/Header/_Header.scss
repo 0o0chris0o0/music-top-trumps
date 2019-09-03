@@ -1,0 +1,20 @@
+@import '../../../styles/settings';
+@import '../../../styles/variables';
+
+:local {
+  .header {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    width: 100%;
+    height: $header-height;
+    padding: rem-calc(20);
+    z-index: 4;
+  }
+
+  .logo {
+    width: 100px;
+    height: 40px;
+    background: $black;
+  }
+}

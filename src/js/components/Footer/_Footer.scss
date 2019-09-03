@@ -1,0 +1,30 @@
+@import '../../../styles/settings';
+@import '../../../styles/variables';
+
+:local {
+  .footer {
+    height: $header-height;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: rem-calc(12);
+    z-index: 4;
+  }
+
+  .stretch {
+    flex: 1;
+  }
+
+  .fiveLogo {
+    width: rem-calc(16);
+  }
+
+  .spotifyLogo {
+    width: rem-calc(84);
+    height: rem-calc(25.19);
+    margin: rem-calc(0 7 0 0);
+
+    @include breakpoint(medium) {
+      margin: 0;
+    }
+  }
+}

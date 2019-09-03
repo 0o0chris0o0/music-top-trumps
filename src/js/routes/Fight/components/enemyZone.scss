@@ -1,0 +1,30 @@
+:local {
+  .enemyZone {
+    height: 100%;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 320px;
+    right: 10px;
+  }
+
+  .enemyZoneInner {
+  	height: 100%;
+  }
+
+  .enemyHand {
+    display: flex;
+    transform: translateY(-100px) scale(0.8) rotate(180deg);
+    justify-content: center;
+  }
+
+  .enemyCardBack {
+    width: 200px;
+    margin: 0 -35px;
+    height: 300px;
+    box-shadow: -5px -2px 3px rgba(black, 0.2);
+    background: radial-gradient(#D7263D, #F46036);
+    transform-origin: 70%;
+  }
+
+}

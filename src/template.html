@@ -1,0 +1,60 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFFFFF" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#FFFFFF" />
+
+  <title>{{METADATA_page_title}}</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+
+  {{> metadata}}
+
+</head>
+
+<body>
+
+  <style>
+    body {
+      background: linear-gradient(to left, #028090, #00A896);
+    }
+    .loader-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 500px;
+    }
+    .loader-spinner {
+      width: 40px;
+      height: 40px;
+      display: block;
+      -webkit-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    @keyframes spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform:rotate(360deg);
+      }
+    }
+  </style>
+
+  <div id="app" class="app-container" style="opacity: 0">
+    {{> loader}}
+  </div>
+
+</body>
+
+</html>

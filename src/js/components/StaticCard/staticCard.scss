@@ -1,0 +1,162 @@
+@import "../../../styles/settings";
+:local {
+  .card {
+    position: relative;
+    background: #0a090c;
+    padding: 0.4em;
+    border-radius: 0.7em;
+    text-align: left;
+    width: 19em;
+    font-size: 10px;
+    outline: none;
+    box-shadow: -5px -2px 3px rgba(black, 0.2);
+
+    button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 3;
+    }
+
+    &:hover {
+      .add {
+        background: rgba(green, 0.4);
+      }
+
+      .remove {
+        background: rgba(red, 0.4);
+      }
+
+      .editSymbol {
+        opacity: 1;
+      }
+    }
+  }
+
+  .playerCard {
+    background: radial-gradient(#266cd6, #5a8bf4);
+  }
+
+  .enemyCard {
+    background: radial-gradient(#d7263d, #f46036);
+  }
+
+  .cardName {
+    font-size: 1.4em;
+    color: #0a090c;
+    padding: 0.8em 0.8em 0.4em;
+  }
+
+  .image {
+    margin: 0.5em auto;
+    transform: rotate(1deg);
+    box-shadow: 0.2em 0.5em 0.5em rgba($black, 0.5);
+    border: 0.2em solid $black;
+    width: 15em;
+    height: 15em;
+    background-position: center;
+    background-size: cover;
+    max-width: 90%;
+  }
+
+  .inner {
+    background: #f0edee;
+    border-radius: 0.5em;
+    padding-bottom: 0.5em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .artist {
+    display: block;
+    font-weight: 700;
+    line-height: 1.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.4em;
+  }
+
+  .trackSkills {
+    margin: 1.5em 0 0;
+    font-size: 1.2em;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .bluredScores {
+    filter: blur(5px);
+    pointer-events: none;
+  }
+
+  .skillRow {
+    padding: 0.5em 0.8em;
+    position: relative;
+    color: $black;
+
+    &:nth-child(odd) {
+      background: #fefefe;
+    }
+
+    button {
+      opacity: 1;
+      transition: all 0.5s ease-in-out;
+
+      &:before,
+      &:after {
+        content: "";
+        height: 1px;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background: black;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      &:before {
+        top: 0;
+      }
+
+      &:after {
+        bottom: 0;
+      }
+
+      &:hover {
+        background: rgba(green, 0.3);
+
+        &:before,
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .edit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s ease-in-out;
+
+    .editSymbol {
+      opacity: 0;
+      color: white;
+      font-size: 6em;
+      transition: opacity 0.4s ease-in-out;
+    }
+  }
+}
